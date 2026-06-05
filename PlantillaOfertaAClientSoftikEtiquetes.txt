@@ -1,0 +1,39 @@
+============================================================
+                   PRESSUPOST COMERCIAL
+============================================================
+
+NÚM. DE PRESSUPOST:      [Número seqüencial]
+
+------------------------------------------------------------
+DESCRIPCIÓ DEL PRODUCTE
+------------------------------------------------------------
+Producte:        Etiquetes [Referència producte client]
+Material:        Cartonet Kraftliner 275 g/m²
+Format final:    61 × 25 mm
+Acabat:          Guillotinat + foradat 3 mm en un cantó
+
+------------------------------------------------------------
+CARACTERÍSTIQUES TÈCNIQUES
+------------------------------------------------------------
+Nombre de models:         [X] model(s)
+Nombre d'etiquetes:       [X] etiquetes totals
+Impressió:                Digital a tot color (una cara)
+Acabats especials:        [cap / laminat / etc.]
+
+-------------------------------------- ----------
+TOTAL PRESSUPOST (sense IVA)           [XX,XX] €
+Preu per unitat:                        [X,XXXX] €/etiqueta
+
+------------------------------------------------------------
+TERMINIS DE LLIURAMENT
+------------------------------------------------------------
+[X] dies hàbils
+
+------------------------------------------------------------
+CONDICIONS
+------------------------------------------------------------
+- Els preus no inclouen l'IVA (21% aplicable)
+- Aquest pressupost té una validesa de 30 dies naturals
+- Qualsevol canvi en especificacions pot modificar el preu final
+
+============================================================

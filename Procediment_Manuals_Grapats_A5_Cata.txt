@@ -1,0 +1,40 @@
+[PROCEDIMENT ESTÀNDARD: CÀLCUL D'IMPRESSIÓ DE MANUALS A5 GRAPATS]
+
+== PARÀMETRES FIXOS ==
+
+Paper:
+- Cost per full A4 = 0,0064 €
+
+Impressió:
+- Cost per click (cara B/N A4) = 0,003061 €
+- Pàgines A5 per full A4 (2 cares) = 4
+- Impressions per full A4 = 2
+
+Grapes:
+- Cost per grapa (amortitzat) = 0,0065333 €
+- Grapes per manual = 2
+
+Preparació:
+- Temps per document = 5 minuts
+- Cost preparació per document = 2,7567 €
+
+Post processament fulletons/emblatge/expedició:
+- Temps per document = 3 minuts
+- Cost post processament per document = 0,9965 €
+
+Impressora:
+- Velocitat duplex = 4.460 fulls A4/hora
+
+== FÓRMULES ==
+
+Fulls A4 per manual = Pàgines A5 / 4
+Impressions per manual = Pàgines A5 / 2
+
+Cost paper = Fulls A4 × 0,0064 €
+Cost impressió = Impressions × 0,003061 €
+Cost grapes = (Unitats × 2) × 0,0065333 €
+Cost preparació = Nombre_de_documents_diferents × 2,7567 €
+Cost post processament fulletons/embalatge/expedició = Nombre_de_documents_diferents x 0,9965 €
+Temps impressió (minuts) = (Fulls_A4_totals / 4460) × 60
+
+== FI DEL PROCEDIMENT ==

@@ -1,0 +1,113 @@
+[PROCEDIMENT ESTÀNDARD: CÀLCUL D'ETIQUETES INFANTILS]
+[VERSIÓ: 3.0 | DATA: 2026-05-26]
+
+== DESCRIPCIÓ DEL PRODUCTE ==
+- Producte: Etiquetes petites (61 × 25 mm)
+- Material: Cartonet Kraftliner de 275 g/m²
+- Impressió: Digital a tot color (una cara)
+- Acabat: Guillotinat a mida final + foradat de 3 mm en un cantó
+
+== PARÀMETRES FIXOS ==
+
+--- PAPER KRAFTLINER ---
+- Cost paper = 1,50 €/kg
+- Gramatge = 275 g/m² (0,275 kg/m²)
+- Dimensions full gran = 750 × 1.050 mm (0,75 × 1,05 m = 0,7875 m²)
+- Pes per full gran = 0,7875 m² × 0,275 kg/m² = 0,2165625 kg/full
+- Cost per full gran = 0,2165625 × 1,50 = 0,32484375 €/full
+
+--- FORMAT INTERMEDI ---
+- Dimensions = 262 × 350 mm
+- Rendiment = 8 formats per full gran
+- Unitats per format = 52 etiquetes (13 col × 4 files)
+- Total etiquetes per full gran = 8 × 52 = 416 etiquetes
+
+--- MACULATURA ---
+- Maculatura per model = 6 formats intermedis
+- Aquests van a càrrec del client (inclosos en el preu)
+
+--- GUILLOTINAT PREVI (tall full gran → formats) ---
+- Cost hora = 27,78 €/h
+- S'ha de calcular el temps segons volum de fulls grans
+
+--- IMPRESSIÓ COLOR ---
+- Cost per click (cara) per format intermedi = 0,046 €
+- Impressió: Una sola cara
+- Velocitat impressora = 24 fulls/minut (format intermedi)
+- Cada format intermedi = 1 impressió (una cara)
+
+--- GUILLOTINAT FINAL (tall formats → etiquetes individuals) ---
+- Inclòs dins 15 minuts per pila
+- Alçada pila = 4-5 cm (≈ 100 fulls format intermedi)
+- Temps per pila = 15 minuts
+- Cost hora = 27,78 €/h
+
+--- FORADAT (diàmetre 3 mm) ---
+- Velocitat = 150 etiquetes/minut
+- Cost hora = 26,50 €/h
+- S'inclou la separació de gometes, posar a taula, foradar, tornar a apilar
+
+--- MANIPULAT SAFATES (compactació i organització) ---
+- Temps per pila = 5 minuts
+- Cost hora = 19,93 €/h
+- Cada pila = 100 fulls format intermedi
+
+--- PREPARACIÓ DOCUMENTS (IMPOSICIÓ) ---
+- Temps base per primer model = 15 minuts
+- Cost hora = 33,08 €/h
+- Cost base = 8,27 €
+- Models addicionals = +5 minuts (+2,7567 € per model extra)
+
+--- TRANSPORT ---
+- Cost per comanda = 5,00 € (a confirmar cada cop)
+
+== FÓRMULES ==
+
+Unitats_producció = Unitats_client + Maculatura
+
+Fulls_gran_necessaris = CEILING(Unitats_producció / 416)
+Formats_intermedis = Fulls_gran_necessaris × 8
+Formats_amb_maculatura = Formats_intermedis + (Nombre_models × 6)
+
+--- COST PAPER ---
+Cost_paper = Fulls_gran_necessaris × 0,32484375 €
+
+--- COST GUILLOTINAT PREVI ---
+Preparació_fixa = 5 minuts (mínim)
+Temps_guillotinat_previ_min = MÀXIM(10, 5 + Fulls_gran_necessaris × 0,5)
+(0,5 min per full gran estimat)
+Cost_guillotinat_previ = (Temps_guillotinat_previ_min / 60) × 27,78 €
+
+--- COST IMPRESSIÓ ---
+Total_impressions = Formats_amb_maculatura × 1 (una cara)
+Cost_impressió = Total_impressions × 0,046 €
+
+--- COST GUILLOTINAT FINAL ---
+Nombre_piles_finals = CEILING(Formats_amb_maculatura / 100)
+Temps_guillotinat_final_min = Nombre_piles_finals × 15
+Cost_guillotinat_final = (Temps_guillotinat_final_min / 60) × 27,78 €
+
+--- COST FORADAT ---
+Temps_foradat_min = (Unitats_producció / 150) × 1
+Cost_foradat = (Temps_foradat_min / 60) × 26,50 €
+
+--- COST MANIPULAT SAFATES ---
+Temps_manipulat_min = Nombre_piles_finals × 5
+Cost_manipulat = (Temps_manipulat_min / 60) × 19,93 €
+
+--- COST PREPARACIÓ DOCUMENTS ---
+Cost_preparació = 8,27 + (Nombre_models - 1) × 2,7567 €
+
+--- COST TRANSPORT ---
+Cost_transport = 5,00 € (per defecte, pot variar)
+
+--- COST TOTAL PRODUCCIÓ ---
+Cost_total = Cost_paper + Cost_guillotinat_previ + Cost_impressió + 
+             Cost_guillotinat_final + Cost_foradat + Cost_manipulat + 
+             Cost_preparació + Cost_transport
+
+--- PREU PER AL CLIENT ---
+Preu_client = Cost_total + (Marge_% × Cost_total)
+Preu_per_unitat = Preu_client / Unitats_client
+
+== FI DEL PROCEDIMENT ==

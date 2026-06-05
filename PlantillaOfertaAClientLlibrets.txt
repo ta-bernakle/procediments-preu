@@ -1,0 +1,40 @@
+============================================================
+                   PRESSUPOST COMERCIAL
+============================================================
+
+NÚM. DE PRESSUPOST:      [Número seqüencial]
+
+------------------------------------------------------------
+DESCRIPCIÓ DEL PRODUCTE
+------------------------------------------------------------
+Producte:        Llibret [Referència producte client]
+Format final:    DIN A5 (148 × 210 mm) vertical
+Enquadernació:   Grapat a cavallet pel llom llarg
+Acabat:          Plec central + 2 grapes metàl·liques
+
+------------------------------------------------------------
+CARACTERÍSTIQUES TÈCNIQUES
+------------------------------------------------------------
+Nombre de models:         [X] model(s)
+Nombre de pàgines:        [X] pàgines per model (Coberta inclosa)
+Nombre d'exemplars:       [X] unitats totals
+Paper:                    Coberta [X] g, estucat | Interior [X] g, estucat
+Impressió:                Digital a tot color (CMYK)
+
+-------------------------------------- ----------
+TOTAL PRESSUPOST (sense IVA)           [XX,XX] €
+Preu per unitat:                        [X,XXXX] €/unitat
+
+------------------------------------------------------------
+TERMINIS DE LLIURAMENT
+------------------------------------------------------------
+[X] dies hàbils
+
+------------------------------------------------------------
+CONDICIONS
+------------------------------------------------------------
+- Els preus no inclouen l'IVA (21% aplicable)
+- Aquest pressupost té una validesa de 30 dies naturals
+- Qualsevol canvi en especificacions pot modificar el preu final
+
+============================================================

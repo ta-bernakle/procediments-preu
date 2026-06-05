@@ -1,0 +1,96 @@
+[PROCEDIMENT ESTÀNDARD: CÀLCUL D'IMPRESSIÓ DE MANUALS A5 COLOR AMB SRA3]
+[VERSIÓ: 2.0 | DATA: 2026-05-26]
+
+== PARÀMETRES FIXOS ==
+
+--- IMPRESSIÓ COLOR SRA3 ---
+- Cost per click (cara) color SRA3 = 0,059 €
+- Pàgines A5 per full SRA3 (2 cares) = 8
+- Impressions per full SRA3 = 2
+- Velocitat impressora = 24 fulls SRA3/minut (1.440 fulls/hora)
+
+--- PAPER ---
+- Superfície SRA3 = 0,144 m²
+- Cost paper interior (90-170 g) = 1,75 €/kg
+- Cost paper coberta (200-350 g) = 1,90 €/kg
+- Cobertes per full SRA3 = 2
+
+--- PREPARACIÓ DOCUMENTS (IMPOSICIÓ) ---
+- Temps base per feina = 15 minuts
+- Cost hora = 33,08 €/hora
+- Cost preparació base = 8,27 €
+- Per cada model addicional = +15 minuts (+8,27 €)
+
+--- GUILLOTINAT PREVI ---
+- Preparació fixa = 5 minuts
+- Processament = 3 minuts / 500 fulls SRA3
+- Temps mínim = 10 minuts
+- Cost hora = 27,78 €/hora
+
+--- PLECAT I GRAPAT EXTERN ---
+- Preparació base (8 pàgines) = 15 minuts
+- Increment = +3 minuts / cada 4 pàgines addicionals
+- Límit automàtic = 32 pàgines A5
+- Velocitat producció = 1.000 revistes/hora
+- Cost hora = 39,65 €/hora
+- Cost grapa = 0,004 €
+- Grapes per manual = 2
+
+--- CONSUM ELÈCTRIC + MANTENIMENT ---
+- Potència equip = 4,5 kW
+- Preu electricitat = 0,15 €/kWh
+- Manteniment per treball = 2,00 €
+
+--- MANIPULAT / EMPAQUETAT ---
+- Temps per model = 5 minuts
+- Cost hora = 19,93 €/hora
+
+--- TRANSPORT ---
+- Cost per comanda (entrega única) = 5,00 €
+
+--- MACULATURA ---
+- Unitats addicionals per prova = 4 unitats per model (2 fulls SRA3 per model)
+- IMPORTANT: La maculatura es suma al tiratge real per calcular costos, però NO apareix al pressupost del client (només unitats sol·licitades)
+
+== FÓRMULES ==
+
+Unitats_producció = Unitats_client + (Nombre_models × 4)
+
+Fulls SRA3 interior = Unitats_producció × CEILING(Pàgines_A5 / 8)
+Fulls SRA3 coberta = CEILING(Unitats_producció / 2)
+Fulls SRA3 totals = Fulls_interior + Fulls_coberta
+
+Cost paper interior = Fulls_interior × (Gram_int_kg × 0,144 × 1,75)
+Cost paper coberta = Fulls_coberta × (Gram_cob_kg × 0,144 × 1,90)
+Cost paper total = Cost_paper_interior + Cost_paper_coberta
+
+Cost impressió = Fulls_SRA3_totals × 2 × 0,059 €
+
+Temps guillotinat (min) = MÀXIM(10, 5 + CEILING(Fulls_SRA3_totals / 500) × 3)
+Cost guillotinat = (Temps_guillotinat / 60) × 27,78 €
+
+Si Pàgines_A5 ≤ 32:
+    Temps_prep_plegat (min) = 15 + ((Pàgines_A5 - 8) / 4) × 3
+    Temps_prod_plegat (h) = Unitats_producció / 1000
+    Temps_total_plegat (h) = (Temps_prep_plegat / 60) + Temps_prod_plegat
+    Cost plegat/grapat = Temps_total_plegat × 39,65 €
+Si Pàgines_A5 > 32:
+    → PREGUNTAR a l'usuari com gestionar els plecs addicionals
+
+Cost grapes = Unitats_producció × 2 × 0,004 €
+Cost electricitat = Temps_total_plegat × 4,5 × 0,15 €
+Cost manteniment = 2,00 €
+
+Cost preparació (imposició) = 8,27 € + (Nombre_models - 1) × 8,27 €
+
+Cost manipulat = (Nombre_models × 5 / 60) × 19,93 €
+Cost transport = 5,00 € (si entrega única)
+
+COST TOTAL PRODUCCIÓ = Suma de tots els costos anteriors
+
+PREU VENDA CLIENT = COST TOTAL PRODUCCIÓ (per a Unitats_client)
+PREU PER UNITAT = PREU VENDA CLIENT / Unitats_client
+
+Temps impressió (minuts) = (Fulls_SRA3_totals / 1440) × 60
+
+== FI DEL PROCEDIMENT ==

@@ -1,0 +1,135 @@
+[PROCEDIMENT ESTÀNDARD: CÀLCUL D'IMPRESSIÓ DE FORMULARIS AUTOCOPIATIUS – POLICIA LOCAL]
+[VERSIÓ: SRA3 – Duplicats blanc+groc – Una cara – Encolat superior]
+[DARRERA ACTUALITZACIÓ: 27/05/2026]
+
+== PARÀMETRES FIXOS ==
+
+Paper autocopiatiu (SRA3 = 320×450 mm):
+- Cost full blanc = 0,02884 €
+- Cost full groc = 0,02567 €
+- Cost paper per joc (1 blanc + 1 groc) = 0,05451 €
+
+Impressió (B/N, una cara, SRA3):
+- Cost per click (cara B/N SRA3) = 0,007 €
+- Impressions per joc = 2 (una al blanc, una al groc)
+- Cost impressió per joc = 2 × 0,007 = 0,014 €
+
+Preparació de fitxers (per model):
+- Temps base = variable (segons encàrrec, en minuts)
+- Cost hora = 33,08 €/h
+- Cost = (Temps_minuts / 60) × 33,08 €
+
+Guillotina prèvia (anar al magatzem, comptar, desempaquetar, tallar SRA3):
+- Temps per comanda = 10 minuts (independent del nombre de models)
+- Cost hora = 27,78 €/h
+- Cost total comanda = (10/60) × 27,78 = 4,63 €
+- IMPORTANT: Aquest cost es reparteix EQUITATIVAMENT entre tots els models de la comanda
+
+Encolat i manipulació posterior (tall previ, encolar superior, refinar, autoseparar):
+- Base per 200 jocs (o fracció) = 18 minuts
+- Cost hora = 27,78 €/h
+- Cost base per 200 jocs (o fracció) = (18/60) × 27,78 = 8,334 €
+- Per model addicional (a partir del segon): +5 minuts = +2,315 €/model
+- NOTA IMPORTANT: El "primer model" és el que es configura i s'encola primer. TOTS els models paguen el seu propi cost d'encolat segons l'ordre de producció.
+
+Empaquetatge retràctil (per paquet de 200 jocs):
+- Plàstic retràctil = 0,05 €
+- Energia retractiladora (1400 W + 300 W = 1700 W, 1 minut) = 0,00425 €
+- Operari empaquetador (1,5 minuts a 19,93 €/h) = 0,49825 €
+- Cost total per paquet = 0,5525 €
+- IMPORTANT: Si un model té MENYS de 200 jocs, igualment ocupa 1 paquet complet (s'arrodoneix a l'alça). Si en té MÉS de 200, es calculen els paquets necessaris: CEIL(U_i / 200) × 0,5525
+
+Màquina d'imprimir (Xerox Versant 4100):
+- Velocitat SRA3 (una cara) ≈ 2.230 fulls/hora (només per càlcul de temps, no de cost)
+
+== FÓRMULES ==
+
+Siguin:
+- N = Nombre de models diferents
+- U_i = Unitats (jocs duplicats) del model i
+- T_i = Temps de preparació de fitxers del model i (en minuts)
+
+Cost paper model i = U_i × 0,05451 €
+
+Cost impressió model i = U_i × 0,014 €
+
+Cost preparació fitxers model i = (T_i / 60) × 33,08 €
+
+Cost guillotina prèvia (repartit) = 4,63 € / N
+
+Cost encolat model i:
+- Si i = 1 (primer model que es produeix) = 8,334 €
+- Si i ≥ 2 = 2,315 €
+
+Cost empaquetatge model i = CEIL(U_i / 200) × 0,5525 €
+(On CEIL és l'arrodoniment a l'enter superior)
+
+Temps impressió model i (minuts) = ((U_i × 2) / 2230) × 60
+(On U_i × 2 = fulls SRA3 totals del model)
+
+== COST TOTAL PER MODEL i ==
+
+Cost_total_model_i = 
+  (U_i × 0,05451) 
+  + (U_i × 0,014) 
+  + ((T_i / 60) × 33,08) 
+  + (4,63 / N) 
+  + Encolat_model_i 
+  + (CEIL(U_i / 200) × 0,5525)
+
+Cost per joc del model i = Cost_total_model_i / U_i
+
+Cost total comanda = Σ Cost_total_model_i (per a i = 1 fins a N)
+
+== EXEMPLE PRÀCTIC (per validar càlculs) ==
+
+Dades:
+- N = 2 models
+- Model 1: U = 200 jocs, T = 30 min
+- Model 2: U = 100 jocs, T = 30 min
+
+Càlcul Model 1:
+  Paper: 200 × 0,05451 = 10,902
+  Impressió: 200 × 0,014 = 2,80
+  Preparació: (30/60) × 33,08 = 16,54
+  Guillotina: 4,63 / 2 = 2,315
+  Encolat (1r model): 8,334
+  Empaquetatge: CEIL(200/200) × 0,5525 = 0,5525
+  TOTAL Model 1 = 10,902 + 2,80 + 16,54 + 2,315 + 8,334 + 0,5525 = 41,4435 €
+
+Càlcul Model 2:
+  Paper: 100 × 0,05451 = 5,451
+  Impressió: 100 × 0,014 = 1,40
+  Preparació: (30/60) × 33,08 = 16,54
+  Guillotina: 4,63 / 2 = 2,315
+  Encolat (2n model): 2,315
+  Empaquetatge: CEIL(100/200) × 0,5525 = 1 × 0,5525 = 0,5525
+  TOTAL Model 2 = 5,451 + 1,40 + 16,54 + 2,315 + 2,315 + 0,5525 = 28,5735 €
+
+Cost total comanda = 41,4435 + 28,5735 = 70,017 €
+Cost per joc mitjà = 70,017 / 300 = 0,2334 €/joc
+
+== LLISTA DE CONTROL PER EVITAR ERRORS ==
+
+□ He comptat bé el nombre de models (N)?
+□ He aplicat 8,334 € d'encolat NOMÉS al PRIMER model?
+□ He aplicat 2,315 € d'encolat a la RESTA de models?
+□ He repartit la guillotina (4,63 €) entre TOTS els models?
+□ He recordat que cada model paga la seva pròpia preparació de fitxers?
+□ He aplicat CEIL(U_i/200) per a l'empaquetatge (100 jocs = 1 paquet)?
+□ He sumat CADA model individualment abans de fer el total?
+□ He aplicat el marge només al FINAL del cost total?
+
+== RESUM DE PARÀMETRES EN TAULA ==
+
+Concepte                    | Cost / Fórmula                    | Observacions
+----------------------------|-----------------------------------|--------------------------------
+Paper per joc               | 0,05451 €                         | Blanc + groc SRA3
+Impressió per joc           | 0,014 €                           | 2 impressions SRA3
+Preparació fitxers          | (T_min/60) × 33,08 €              | Per model, T variable
+Guillotina prèvia           | 4,63 € / N                        | Per comanda, es reparteix
+Encolat 1r model            | 8,334 €                           | Fix per 200 jocs o fracció
+Encolat models addicionals  | 2,315 €                           | A partir del segon
+Empaquetatge                | CEIL(U/200) × 0,5525 €            | Cada paquet són 200 jocs
+
+== FI DEL PROCEDIMENT ==

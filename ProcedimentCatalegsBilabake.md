@@ -1,5 +1,5 @@
 # PROCEDIMENT ESTÀNDARD: CATÀLEGS BILABAKE
-**Versió:** 1.0  
+**Versió:** 1.1  
 **Data:** 2026-07-20  
 **Tipus:** Digital (Versant 4100), color 1 cara, SRA3  
 **Àmbit:** Tirades petites (≤ 1000 impressions)  
@@ -29,11 +29,11 @@
 | Factor multiplicador (segons volum) | Veure taula 2.1.1 | — |
 
 #### Taula 2.1.1: Factor multiplicador per volum d'impressions
-| Volum (impressions) | Factor multiplicador |
-|---------------------|----------------------|
-| Fins a 250 | 8× |
-| De 251 a 500 | 6× |
-| De 501 a 1.000 | 4× |
+| Volum (impressions SRA3) | Factor multiplicador |
+|--------------------------|----------------------|
+| Fins a 250 | 6× |
+| De 251 a 500 | 4× |
+| De 501 a 1.000 | 3× |
 
 ---
 
@@ -108,49 +108,64 @@ Unitats_interior = SUMA(Unitats_model_i)
 
 text
 
-### 4.2. Càlcul de pàgines totals i impressions
+### 4.2. Càlcul de pàgines totals
 Pàgines_totals_interior = SUMA(Unitats_model_i × Pàgines_model_i)
-Impressions_interior = Pàgines_totals_interior (perquè és 1 cara)
 
 text
 
-### 4.3. Càlcul de fulls SRA3 (interior)
-Fulls_SRA3_interior_net = CEILING(Impressions_interior / 2)
-Fulls_SRA3_interior_producció = Fulls_SRA3_interior_net + Maculatura_interior (6 fulls)
+### 4.3. Càlcul d'impressions interiors (SRA3)
+Impressions_interior = CEILING(Pàgines_totals_interior / 2)
+
+text
+*(Perquè a cada full SRA3 hi caben 2 DIN A-4 impresos a 1 cara)*
+
+### 4.4. Càlcul de fulls SRA3 interiors (amb maculatura)
+Fulls_SRA3_interior_producció = Impressions_interior + 6
 
 text
 
-### 4.4. Càlcul de portada (si n'hi ha)
-Impressions_portada = Unitats_interior × 2 (1 portada + 1 contraportada per unitat)
-Fulls_SRA3_portada = CEILING(Impressions_portada / 2)
+### 4.5. Càlcul de portada (si n'hi ha)
+Impressions_portada = CEILING(Unitats_interior × 2 / 2) = Unitats_interior
+
+text
+*(1 portada + 1 contraportada per unitat, caben 2 per full SRA3)*
+
+**Simplificat:**
+Impressions_portada = Unitats_interior
+
+text
+*(perquè cada unitat necessita 2 cares de portada, que caben en 1 full SRA3)*
+
+### 4.6. Càlcul de fulls SRA3 portada
+Fulls_SRA3_portada = Impressions_portada
 
 text
 *(No s'aplica maculatura a la portada)*
 
-### 4.5. Càlcul de cost paper
+### 4.7. Càlcul de cost paper
 Cost_paper_interior = Fulls_SRA3_interior_producció × 0,02088
 Cost_paper_portada = Fulls_SRA3_portada × 0,1044
 
 text
 
-### 4.6. Càlcul total d'impressions (per factor multiplicador)
+### 4.8. Càlcul total d'impressions (per factor multiplicador)
 Impressions_totals = Impressions_interior + Impressions_portada
 Factor_multiplicador = Segons taula 2.1.1
 Cost_click_efectiu = 0,059 × Factor_multiplicador
 
 text
 
-### 4.7. Càlcul cost impressió
+### 4.9. Càlcul cost impressió
 Cost_impressió = Impressions_totals × 0,059 × Factor_multiplicador
 
 text
 
-### 4.8. Càlcul cost total
+### 4.10. Càlcul cost total
 COST_NET = Cost_impressió + Cost_paper_interior + Cost_paper_portada + 8,27 + 4,63 + 1,66 + 5,00
 
 text
 
-### 4.9. Preu de venda
+### 4.11. Preu de venda
 PREU_VENDA = COST_NET × (1 + Marge_%)
 Preu_unitari = PREU_VENDA / Unitats_interior
 
@@ -161,28 +176,29 @@ text
 ## 5. EXEMPLE D'APLICACIÓ
 
 ### Dades d'entrada
-| Model | Pàgines | Unitats | Impressions (pàgines × unitats) |
-|-------|---------|---------|--------------------------------|
+| Model | Pàgines | Unitats | Pàgines totals (pàgines × unitats) |
+|-------|---------|---------|-----------------------------------|
 | A | 4 | 50 | 200 |
 | B | 6 | 30 | 180 |
 | C | 8 | 20 | 160 |
 | **Total interior** | — | 100 | **540** |
-| Portada | — | — | 200 (100 × 2) |
-| **Total impressions** | — | — | **740** |
+
+**Portada:** Sí (100 unitats → 100 impressions portada SRA3)  
+**Total impressions SRA3:** CEILING(540/2) + 100 = 270 + 100 = **370**
 
 ### Resultats
 | Concepte | Càlcul | Import |
 |----------|--------|--------|
-| Paper interior | (540/2 + 6) × 0,02088 | 5,76 € |
-| Paper portada | (200/2) × 0,1044 | 10,44 € |
-| Impressions | 740 × 0,059 × 4 | 174,64 € |
+| Paper interior | (270 + 6) × 0,02088 | 5,76 € |
+| Paper portada | 100 × 0,1044 | 10,44 € |
+| Impressions (370 × 0,059 × 4) | 370 × 0,236 | 87,32 € |
 | Preparació | 8,27 | 8,27 € |
 | Guillotinat | 4,63 | 4,63 € |
 | Embalatge | 1,66 | 1,66 € |
 | Transport | 5,00 | 5,00 € |
-| **COST NET** | | **210,40 €** |
-| **PREU VENDA (50%)** | | **315,60 €** |
-| **Preu unitari** | 315,60 / 100 | **3,156 €/catàleg** |
+| **COST NET** | | **123,08 €** |
+| **PREU VENDA (50%)** | | **184,62 €** |
+| **Preu unitari** | 184,62 / 100 | **1,846 €/catàleg** |
 
 ---
 
@@ -203,6 +219,7 @@ text
 | Versió | Data | Canvis |
 |--------|------|--------|
 | 1.0 | 2026-07-20 | Creació inicial del procediment |
+| 1.1 | 2026-07-20 | Correcció: impressions SRA3 = pàgines/2. Nous factors multiplicadors (6× / 4× / 3×) |
 
 ---
 

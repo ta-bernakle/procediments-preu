@@ -81,14 +81,25 @@ Exemple: 195 fulls, paper 160 g a 1,75 €/kg
 → 195 × (0,160 × 0,144 × 1,75) = 7,86 €
 
 8. IMPRESSIÓ (DIGITAL, DOBLE CARA, COLOR)
-8.1 Determinació del factor multiplicador
-El cost del click de color s'escala segons el volum d'impressions SRA3:
 
-Volum (impressions SRA3)	Factor multiplicador
+8.1 Determinació del factor multiplicador (IMPORTANT)
+El factor multiplicador es calcula en base al nombre de CLICS (cares impreses), NO en base al nombre de fulls SRA3.
+
+text
+Clics_totals = Fulls_SRA3 × 2  (sempre doble cara)
+Volum (clics)	Factor multiplicador
 Fins a 250	6×
 De 251 a 500	4×
 De 501 a 1.000	3×
-Nota: El volum es calcula sobre Fulls_SRA3 (no sobre cares). Una impressió SRA3 = 1 full.
+Exemple:
+
+163 fulls SRA3 × 2 cares = 326 clics
+
+326 clics → entre 251 i 500 → factor 4×
+
+Cost per clic = 0,059 × 4 = 0,236 €
+
+⚠️ CRITICAL: No confondre fulls SRA3 amb clics. El factor s'aplica sobre el nombre de cares impreses, no sobre el nombre de fulls.
 
 8.2 Càlcul del cost d'impressió
 text

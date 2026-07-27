@@ -36,6 +36,7 @@ preparacio_imposicio = 33.08
 guillotinat = 27.78
 plegat_grapat_extern = 39.65
 manipulat_empaquetat = 19.93
+fendit = 31.70
 foradat = 26.50
 
 # ============================================================
@@ -69,7 +70,10 @@ guillotinat_per_500_full = 3
 guillotinat_temps_minim = 10
 guillotinat_extra_orientacio_mixta = 3
 manipulat_per_model = 5
-foradat_velocitat = 150                # etiquetes per minut
+preparació_fendidora = 10
+velocitat_fendidora = 2.500 fulls/hora (llargada 300 mm) i 1.800 fulls/hora llargada de 301 fins a 700 mm
+preparació_foradadora = 5 (per tots els models iguals de mida)
+foradar_velocitat = 250 fulls foradats/minut
 
 # ============================================================
 # 7. MACULATURA PER DEFECTE (unitats per model)

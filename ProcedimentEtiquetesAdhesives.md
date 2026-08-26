@@ -204,8 +204,9 @@ total_per_full = etiquetes_ample × etiquetes_alt
 
 | Material                     | Preu / full |
 |------------------------------|-------------|
-| Adhesiu òfset                | 0,1915 €    |
+| Adhesiu òfset blanc          | 0,1915 €    |
 | Adhesiu estucat brillant     | 0,2553 €    |
+| Adhesiu òfset flúor groc     | 0,2780 €    |
 
 ---
 
@@ -227,6 +228,6 @@ total_per_full = etiquetes_ample × etiquetes_alt
 ---
 
 > 📌 **Versió:** 2.1  
-> 📅 **Data:** 2026-08-25  
+> 📅 **Data:** 2027-08-25  
 > ✏️ **Elaborat a partir de dades reals de producció**  
 > 🔄 **Actualització:** Corregit cost hora d'embalatge a 19,93 €

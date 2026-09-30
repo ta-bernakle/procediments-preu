@@ -1,3 +1,5 @@
+> ⚠️ **OBSOLET** — Aquest fitxer ha estat substituït per `procedimentLlibretsA5Grapats.md` (versió 4.0). No usar per a càlculs nous.
+
 [PROCEDIMENT ESTÀNDARD: CÀLCUL D'IMPRESSIÓ DE MANUALS A5 COLOR AMB SRA3]
 VERSIÓ: 3.0 | DATA: 2026-06-30
 

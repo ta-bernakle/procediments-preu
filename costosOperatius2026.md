@@ -8,25 +8,28 @@
 # ============================================================
 # Per gramatge i tipus
 [paper]
-ofset_80 = 1.75
-ofset_115 = 1.75
-ofset_135 = 1.75
-ofset_250 = 2.90
+ofset_70 = 1.58
+ofset_80 = 1.54
+ofset_140 = 1.54
+ofset_160 = 1.60
+ofset_350 = 1.60
 estucat_115 = 1.75
 estucat_135 = 1.75
 estucat_170 = 1.75
 estucat_250 = 1.90
 estucat_300 = 1.90
 estucat_350 = 1.90
-kraftliner_275 = 1.50
+kraftliner_275 = 1.495
+folding_275 = 1.65
 
 # ============================================================
 # 2. IMPRESSIÓ (€/cara)
 # ============================================================
 [impressio]
-b_n_A4_base = 0.003061
-color_SRA3_base = 0.059
-color_SRA3_custom = 0.046      # per a formats petits (etiquetes)
+b_n_A4_base = 0.003147
+b_n_SRA3_base = 0.00556
+color_A4_base = 0.030426
+color_SRA3_base = 0.03966
 
 # ============================================================
 # 3. MÀ D'OBRA (€/hora)
@@ -81,11 +84,10 @@ foradar_velocitat = 250 fulls foradats/minut
 [maculatura]
 etiquetes = 6
 manuals_color = 4
-diplomes = 0
 # afegir quan sorgeixin nous productes
 
 # ============================================================
-# 8. FORMATS DE MÀQUINA (mm)
+# 8. FORMATS DE MÀQUINA DIGITAL XEROX VERSANT 4100 PRO (mm)
 # ============================================================
 [format_maquina]
 SRA3_ample = 320

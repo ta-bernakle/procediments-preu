@@ -1,21 +1,28 @@
-# PROCEDIMENT: CÀLCUL D'IMPRESSIÓ DE LLIBRETS A5 GRAPATS A COLOR
+> ⚠️ **NOTA IMPORTANT SOBRE EL MARGE:** El cost de producció calculat en aquest procediment NO inclou costos indirectes (lloguer, assegurances, sou, amortització, màrqueting, impostos, imprevistos). El marge comercial s'aplica sobre el cost de producció i ha de cobrir aquests costos indirectes a més del benefici net. Es recomana revisar el marge segons el volum de la comanda (100-150% per a comandes petites, 75-100% per a mitjanes, 50-75% per a grans, 25-50% per a molt grans) o bé usar marge sobre preu de venda en lloc de marge sobre cost.
 
-**VERSIÓ:** 4.0  
-**DATA:** 2026-09-30  
-**TIPUS:** Plegat automàtic + grapat  
-**Marge per defecte:** 50%
+📄 PROCEDIMENT: LLIBRETS A5 GRAPATS A COLOR (SRA3)
+Fitxer: procedimentLlibretsA5GrapatsColor.md
+
+markdown
+# PROCEDIMENT: CÀLCUL D'IMPRESSIÓ DE LLIBRETS A5 GRAPATS A COLOR (SRA3)
+
+**VERSIÓ:** 5.0  
+**DATA:** 2026-11-16  
+**TIPUS:** Impressió color SRA3 + plegat i grapat  
+**Marge per defecte:** escalat (50% - 200%)  
+**Substitueix:** Versió 4.0 (actualització de costos reals)
 
 ---
 
 ## 1. OBJECTIU
 
-Càlcul de costos per a llibrets A5 grapats, impresos sobre SRA3, amb coberta i interior de gramatges i colors diferents (color o blanc i negre).
+Càlcul de costos per a llibrets A5 grapats, impresos **en color sobre SRA3** (8 pàgines A5 per full SRA3, 4 per cara), amb plegat i grapat.
+
+Aquest procediment és per a **color sobre SRA3**. Per a **blanc i negre sobre A4 en línia**, usar el procediment `procedimentLlibretsA5GrapatsBNEnLinia.md`.
 
 ---
 
 ## 2. ESTRUCTURA FÍSICA DEL PRODUCTE
-
-Un llibret A5 es compon de plecs (quaderns) de 4 pàgines A5, que s'imprimeixen a raó de 2 plecs per full SRA3 (un a cada cara).
 
 - 1 full SRA3 = 2 plecs = 8 pàgines A5 (4 per cara)
 - Cada plec = 4 pàgines A5 = ½ full SRA3
@@ -33,21 +40,20 @@ Un llibret A5 es compon de plecs (quaderns) de 4 pàgines A5, que s'imprimeixen 
 ## 3. PARÀMETRES FIXOS
 
 ### Impressió SRA3
-- Cost per click color SRA3 = **0,059 €/cara**
-- Cost per click blanc i negre SRA3 = **0,012 €/cara**
+- Cost per click color SRA3 = **0,03966 €/cara**
 - Velocitat impressora = 24 fulls SRA3/min (1.440 fulls/hora)
-- Factor de click per defecte = **1,2** (ajustable segons volum)
+- Factor de click per defecte = **1,0** (ajustable segons volum)
 
 ### Paper
 - Superfície SRA3 = 0,144 m²
-- Cost paper interior (90-170 g) = 1,75 €/kg
-- Cost paper coberta (200-350 g) = 1,90 €/kg
+- Cost paper estucat 135 g = **1,75 €/kg** (interior)
+- Cost paper estucat 250 g = **1,90 €/kg** (coberta)
 - Cobertes per full SRA3 = 2
 
 ### Preparació documents (imposició)
 - Temps base per feina = 15 minuts
-- Cost preparació base = 8,27 €
-- Per cada model addicional = +15 minuts (+8,27 €)
+- Cost preparació base = **8,27 €** (15 min × 33,08 €/h)
+- Per cada model addicional = +5 minuts (+2,76 €)
 - Cost hora = 33,08 €/hora
 
 ### Guillotinat previ
@@ -56,13 +62,13 @@ Un llibret A5 es compon de plecs (quaderns) de 4 pàgines A5, que s'imprimeixen 
 - Temps mínim = 10 minuts
 - Cost hora = 27,78 €/hora
 
-### Plegat i grapat automàtic
+### Plegat i grapat
 - Preparació base (8 pàgines) = 15 minuts
 - Increment = +3 minuts / cada 4 pàgines addicionals
 - Límit automàtic = 32 pàgines A5
 - Velocitat producció = 1.000 revistes/hora
 - Cost hora = 39,65 €/hora
-- Cost grapa = 0,004 €
+- Cost grapa (amortitzada) = **0,0065333 €**
 - Grapes per manual = 2
 
 ### Consum elèctric + manteniment
@@ -78,46 +84,41 @@ Un llibret A5 es compon de plecs (quaderns) de 4 pàgines A5, que s'imprimeixen 
 - Cost per comanda (entrega única) = 5,00 €
 
 ### Maculatura
-- Unitats addicionals per prova = 4 unitats per model (2 fulls SRA3 per model)
+- Unitats addicionals per prova = **4 unitats per model** (2 fulls SRA3 per model)
 - S'aplica per separat a interior i coberta
 - NO es factura al client
 
 ### Marge de benefici
-- Marge per defecte = **50%**
+- Escalat segons volum i tipus de client (veure apartat 6)
 
 ---
 
 ## 4. FÓRMULES
 
 ### 4.1 Maculatura
-
 Unitats_producció = Unitats_client + (Nombre_models × 4)
 
-### 4.2 Fulls SRA3 (per tipus de paper)
 
+### 4.2 Fulls SRA3 (per tipus de paper)
 Fulls_SRA3_tipus = Unitats_producció × (Pàgines_tipus / 8)
 Fulls_SRA3_totals = Fulls_SRA3_interior + Fulls_SRA3_coberta
 
 
 ### 4.3 Cost paper
-
 Cost_paper_tipus = Fulls_SRA3_tipus × (Gramatge_kg × 0,144 × Preu_kg_tipus)
 Cost_paper_total = Cost_paper_interior + Cost_paper_coberta
 
-### 4.4 Cost impressió
 
-Cost_impressió_interior = Fulls_SRA3_interior × 2 × Cost_click × Factor_click
-Cost_impressió_coberta = Fulls_SRA3_coberta × 2 × Cost_click × Factor_click
-Cost_impressió_total = Cost_impressió_interior + Cost_impressió_coberta
-On `Cost_click` = 0,059 € (color) o 0,012 € (B/N) segons correspongui.
+### 4.4 Cost impressió
+Cost_impressió = Fulls_SRA3_totals × 2 × 0,03966 € × Factor_click
+
 
 ### 4.5 Guillotinat previ
-
 Temps_guillotinat (min) = MÀXIM(10, 5 + CEILING(Fulls_SRA3_totals / 500) × 3)
 Cost_guillotinat = (Temps_guillotinat / 60) × 27,78 €
 
-### 4.6 Plegat i grapat
 
+### 4.6 Plegat i grapat
 Si Pàgines_A5 ≤ 32:
 Temps_prep_plegat (min) = 15 + ((Pàgines_A5 - 8) / 4) × 3
 Temps_prod_plegat (h) = Unitats_producció / 1000
@@ -126,32 +127,30 @@ Cost_plegat/grapat = Temps_total_plegat × 39,65 €
 Si Pàgines_A5 > 32:
 → PREGUNTAR a l'usuari com gestionar els plecs addicionals
 
-### 4.7 Grapes
 
-Cost_grapes = Unitats_producció × 2 × 0,004 €
+### 4.7 Grapes
+Cost_grapes = Unitats_producció × 2 × 0,0065333 €
 
 
 ### 4.8 Electricitat + manteniment
-
 Cost_electricitat = Temps_total_plegat × 4,5 × 0,15 €
 Cost_manteniment = 2,00 €
 
 
 ### 4.9 Preparació (imposició)
+Cost_preparació = 8,27 € + (Nombre_models - 1) × 2,76 €
 
-Cost_preparació = 8,27 € + (Nombre_models - 1) × 8,27 €
 
 ### 4.10 Manipulat
-
 Cost_manipulat = (Nombre_models × 5 / 60) × 19,93 €
 
-### 4.11 Transport
 
+### 4.11 Transport
 Cost_transport = 5,00 €
 
-### 4.12 Cost total i preu de venda
 
-COST TOTAL PRODUCCIÓ = Cost_paper_total + Cost_impressió_total + Cost_guillotinat
+### 4.12 Cost total i preu de venda
+COST TOTAL PRODUCCIÓ = Cost_paper_total + Cost_impressió + Cost_guillotinat
 
 Cost_plegat/grapat + Cost_grapes + Cost_electricitat
 
@@ -162,17 +161,23 @@ Cost_transport
 PREU VENDA CLIENT = COST TOTAL PRODUCCIÓ × (1 + Marge)
 PREU PER UNITAT = PREU VENDA CLIENT / Unitats_client
 
-### 4.13 Temps d'impressió
 
+### 4.13 Temps d'impressió
 Temps_impressió (minuts) = (Fulls_SRA3_totals / 1440) × 60
+
 
 ---
 
-## 5. EXEMPLE VERIFICAT
+## 5. EXEMPLE VERIFICAT (400 unitats, 24 pàgines, 1 model, factor 1,0)
 
-### 5.1 Llibret 24 pàgines (coberta color 250 g + interior color 135 g)
+**Dades:**
+- Unitats_client = 400
+- Pàgines coberta = 4 (250 g)
+- Pàgines interior = 20 (135 g)
+- Nombre_models = 1
+- Factor_click = 1,0
 
-**Dades:** 400 unitats, 1 model, factor click 1,2, marge 50%
+**Càlculs:**
 
 | Concepte | Fórmula | Resultat |
 |----------|---------|----------|
@@ -180,56 +185,51 @@ Temps_impressió (minuts) = (Fulls_SRA3_totals / 1440) × 60
 | Fulls interior | 404 × (20/8) | 1.010 |
 | Fulls coberta | 404 × (4/8) | 202 |
 | Total fulls SRA3 | 1.010 + 202 | 1.212 |
-| Cost paper interior | 1.010 × 0,03402 | 34,36 € |
-| Cost paper coberta | 202 × 0,0684 | 13,82 € |
-| Cost impressió (color ×1,2) | 1.212 × 2 × 0,059 × 1,2 | 171,62 € |
+| Cost paper interior | 1.010 × (0,135 × 0,144 × 1,75) | 34,36 € |
+| Cost paper coberta | 202 × (0,250 × 0,144 × 1,90) | 13,82 € |
+| Cost impressió | 1.212 × 2 × 0,03966 | 96,13 € |
 | Cost guillotinat | (14/60) × 27,78 | 6,48 € |
 | Cost plegat/grapat | 0,854 × 39,65 | 33,86 € |
-| Cost grapes | 404 × 2 × 0,004 | 3,23 € |
+| Cost grapes | 404 × 2 × 0,0065333 | 5,28 € |
 | Electricitat | 0,854 × 4,5 × 0,15 | 0,58 € |
 | Manteniment | fix | 2,00 € |
 | Preparació | fix | 8,27 € |
 | Manipulat | (1×5/60)×19,93 | 1,66 € |
 | Transport | fix | 5,00 € |
-| **COST TOTAL** | | **280,88 €** |
-| **PREU VENDA (+50%)** | 280,88 × 1,50 | **421,32 €** |
-| **PREU PER UNITAT** | 421,32 / 400 | **1,05 €** |
+| **COST TOTAL** | | **207,44 €** |
+| **COST PER UNITAT** | 207,44 / 400 | **0,519 €** |
 
-### 5.2 Llibret 16 pàgines (coberta color 250 g + interior B/N 80 g)
+**Temps d'impressió:**
+(1.212 / 1440) × 60 = 50,5 minuts ≈ 51 minuts
 
-**Dades:** 50, 100 i 500 unitats, 1 model, factor click 1,2, marge 50%
-
-| Concepte | 50 unitats | 100 unitats | 500 unitats |
-|----------|-----------|-------------|-------------|
-| Unitats producció | 54 | 104 | 504 |
-| Fulls interior (B/N) | 81 | 156 | 756 |
-| Fulls coberta (color) | 27 | 52 | 252 |
-| Fulls SRA3 totals | 108 | 208 | 1.008 |
-| Cost paper interior | 1,63 € | 3,14 € | 15,24 € |
-| Cost paper coberta | 1,85 € | 3,56 € | 17,24 € |
-| Cost impressió interior (B/N) | 2,33 € | 4,49 € | 21,77 € |
-| Cost impressió coberta (color) | 3,82 € | 7,36 € | 35,68 € |
-| Cost plegat/grapat | 16,02 € | 17,99 € | 33,85 € |
-| Cost grapes | 0,43 € | 0,83 € | 4,03 € |
-| Electricitat | 0,25 € | 0,28 € | 0,53 € |
-| Manteniment | 2,00 € | 2,00 € | 2,00 € |
-| Preparació | 8,27 € | 8,27 € | 8,27 € |
-| Manipulat | 1,66 € | 1,66 € | 1,66 € |
-| Transport | 5,00 € | 5,00 € | 5,00 € |
-| **COST TOTAL** | **43,26 €** | **54,58 €** | **145,27 €** |
-| **PREU VENDA (+50%)** | **64,89 €** | **81,87 €** | **217,91 €** |
-| **PREU PER UNITAT** | **1,30 €** | **0,82 €** | **0,44 €** |
 
 ---
 
-## 6. NOTES
+## 6. PROPOSTA DE MARGE ESCALAT
 
-1. El cost de click B/N (0,012 €/cara) és un valor de referència. Ajustar segons proveïdor.
-2. El guillotinat previ s'aplica al total de fulls SRA3 (interior + coberta).
-3. El plegat/grapat es calcula sobre el total de pàgines A5 del producte.
-4. Si el producte supera les 32 pàgines, cal consultar com gestionar els plecs addicionals.
-5. El marge de benefici s'aplica al final sobre el cost total de producció.
+| Escenari | Marge | Preu total | Preu/unitat | Comentari |
+|----------|-------|------------|-------------|-----------|
+| **Cost pur** | 0% | 207,44 € | 0,519 € | Referència interna |
+| **Marge mínim** (volum, client fidel) | 40% | 290,42 € | 0,726 € | Competitiu |
+| **Marge estàndard** (client habitual) | 50% | 311,16 € | 0,778 € | Referència |
+| **Marge recomanat** (comanda petita) | 75% | 363,02 € | 0,908 € | Cobreix costos comercials |
+| **Marge premium** (urgència) | 100% | 414,88 € | 1,037 € | Comandes especials |
+| **Marge alt** (client nou) | 150% | 518,60 € | 1,297 € | Màxim recomanat |
 
 ---
 
-## FI DEL PROCEDIMENT (VERSIÓ 4.0)
+## 7. NOTES
+
+1. Aquest procediment és **exclusiu per a color sobre SRA3**.
+2. Per a **blanc i negre sobre A4 en línia**, usar `procedimentLlibretsA5GrapatsBNEnLinia.md`.
+3. Per a **enquadernació rústica fresada**, usar `procedimentLlibretsA5RusticaFresada.md`.
+4. El cost de click color SRA3 (0,03966 €/cara) és el valor real del fitxer `costosOperatius2026.md`.
+5. La preparació base és de 15 minuts (8,27 €); cada model addicional suma 5 minuts (2,76 €).
+6. El guillotinat previ s'aplica al total de fulls SRA3 (interior + coberta).
+7. El plegat/grapat es calcula sobre el total de pàgines A5 del producte.
+8. Si el producte supera les 32 pàgines, cal consultar com gestionar els plecs addicionals.
+9. El marge s'aplica al final sobre el cost total de producció.
+
+---
+
+## FI DEL PROCEDIMENT (VERSIÓ 5.0)

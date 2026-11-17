@@ -1,5 +1,12 @@
 📄 Procediment d'impressió de fulls (paper normal / estucat)
 (Base per a pressupostos i planificació de comandes: flyers, volants, fulls solts, targetes, etc.)
+
+---
+
+> ⚠️ **NOTA IMPORTANT SOBRE EL MARGE:** El cost de producció calculat en aquest procediment NO inclou costos indirectes (lloguer, assegurances, sou, amortització, màrqueting, impostos, imprevistos). El marge comercial s'aplica sobre el cost de producció i ha de cobrir aquests costos indirectes a més del benefici net. Es recomana revisar el marge segons el volum de la comanda (100-150% per a comandes petites, 75-100% per a mitjanes, 50-75% per a grans, 25-50% per a molt grans) o bé usar marge sobre preu de venda en lloc de marge sobre cost.
+
+---
+
 1. FULL ESTÀNDARD
 Mida full base: 320 × 450 mm (SRA3 / doble foli)
 
